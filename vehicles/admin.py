@@ -11,7 +11,7 @@ class BrandAdmin(admin.ModelAdmin):
 @admin.register(models.Color)
 class ColorAdmin(admin.ModelAdmin):
     list_display = ('id', 'name',)
-    ordering = ('id',)
+    ordering = ('name',)
 
 
 @admin.register(models.Type)
@@ -22,6 +22,10 @@ class TypeAdmin(admin.ModelAdmin):
 
 @admin.register(models.Vehicle)
 class VehicleAdmin(admin.ModelAdmin):
-    list_display = ('id', 'type', 'brand', 'model',)
+    list_display = ('model', 'type', 'brand',)
+    list_display_links = ('model',)
+    list_filter = ('type', 'status', 'brand',
+                   'have_wheels', 'manufacture_year',)
     list_per_page = 10
-    ordering = ('-id',)
+    ordering = ('model',)
+    search_fields = ('model',)
