@@ -1,0 +1,28 @@
+{% extends 'global/base.html' %} 
+
+{% block content %}
+<div class="album py-5 bg-body-tertiary">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        {% for vehicle in vehicles %}
+          <div class="col">
+            <div class="card shadow-sm">
+              <div class="col-auto d-none d-lg-block">
+                <img src="{{ vehicle.image.url }}" width="100%" height="280" alt="">
+            </div>
+              <div class="card-body">
+                <p class="card-text">{{ vehicle.model }} ({{ vehicle.manufacture_year }})</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Saiba Mais</button>
+                  </div>
+                  <small class="text-body-primary">{{ vehicle.brand }}</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock %}
