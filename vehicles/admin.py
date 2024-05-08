@@ -5,7 +5,7 @@ from vehicles import models
 @admin.register(models.Brand)
 class BrandAdmin(admin.ModelAdmin):
     list_display = ('id', 'name',)
-    ordering = ('id',)
+    ordering = ('name',)
 
 
 @admin.register(models.Color)
@@ -17,12 +17,12 @@ class ColorAdmin(admin.ModelAdmin):
 @admin.register(models.Type)
 class TypeAdmin(admin.ModelAdmin):
     list_display = ('id', 'name',)
-    ordering = ('id',)
+    ordering = ('name',)
 
 
 @admin.register(models.Vehicle)
 class VehicleAdmin(admin.ModelAdmin):
-    list_display = ('model', 'type', 'brand',)
+    list_display = ('model', 'brand', 'type',)
     list_display_links = ('model',)
     list_filter = ('type', 'status', 'brand',
                    'have_wheels', 'manufacture_year',)
