@@ -22,7 +22,7 @@ class TypeAdmin(admin.ModelAdmin):
 
 @admin.register(models.Vehicle)
 class VehicleAdmin(admin.ModelAdmin):
-    list_display = ('model', 'brand', 'type',)
+    list_display = ('model', 'brand', 'type', 'status',)
     list_display_links = ('model',)
     list_filter = ('type', 'status', 'brand',
                    'have_wheels', 'manufacture_year',)
