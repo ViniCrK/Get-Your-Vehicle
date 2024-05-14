@@ -29,3 +29,4 @@ class VehicleAdmin(admin.ModelAdmin):
     list_per_page = 10
     ordering = ('model',)
     search_fields = ('model',)
+    prepopulated_fields = {"slug": ("model",)}
