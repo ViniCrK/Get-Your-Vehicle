@@ -1,3 +1,4 @@
+from django.utils.text import slugify
 from django.db import models
 from .type import Type
 from .brand import Brand
@@ -34,6 +35,12 @@ class Vehicle(models.Model):
         default=False, verbose_name='Possui Rodas')
     wheels_number = models.IntegerField(
         blank=True, null=True, verbose_name='Quantidade de Rodas')
+    slug = models.SlugField(default='', unique=True, null=False)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.model)
+        super().save(*args, **kwargs)
 
     def __str__(self) -> str:
         return f'{self.model}'
