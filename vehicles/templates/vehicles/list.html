@@ -14,7 +14,9 @@
                 <p class="card-text">{{ vehicle.model }} ({{ vehicle.manufacture_year }})</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Saiba Mais</button>
+                    <a href="{% url 'vehicles:detail' vehicle.slug %}">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Saiba Mais</button>
+                    </a>
                   </div>
                   <small class="text-body-primary">{{ vehicle.brand }}</small>
                 </div>
