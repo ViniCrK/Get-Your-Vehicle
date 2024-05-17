@@ -22,7 +22,6 @@ class DetailVehicleView(DetailView):
     model = Vehicle
     template_name = 'vehicles/detail.html'
     context_object_name = 'vehicle'
-    # queryset = Vehicle.objects.all()
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
