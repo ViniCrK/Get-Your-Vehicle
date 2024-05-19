@@ -1,0 +1,31 @@
+{% extends 'global/base.html' %}
+
+{% block content %}
+
+<div class="p-4 p-md-5 mb-4 rounded flex-md-row text-body-emphasis bg-body-secondary feature-section">
+  <div class="text-container">
+    <h1 class="display-4 fst-italic">Venha adquirir o seu veículo na GYV</h1>
+    <p class="lead my-3">Seu Destino em Movimento: Encontre o Veículo dos Seus Sonhos Aqui!</p>
+  </div>
+  <div class="image-container">
+    <img src="https://images.pexels.com/photos/7144174/pexels-photo-7144174.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Descrição da Imagem" class="custom-image">
+  </div>
+</div>
+
+<hr class="featurette-divider">
+
+<div class="container marketing">
+  <div class="row featurette">
+    <div class="col-md-7">
+      <h2 class="featurette-heading fw-normal lh-1">Seu veículo está aqui.</h2>
+      <p class="lead">Encontre o ideal para você clicando no botão abaixo.</p>
+    </div>
+    <div class="col-md-5">
+      <img src="https://images.pexels.com/photos/120049/pexels-photo-120049.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Descrição da Imagem" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto custom-image">
+    </div>
+    <p><a class="btn btn-primary" href="{% url 'vehicles:list' %}">Ver Veículos »</a></p>
+  </div>
+
+  <hr class="featurette-divider">
+</div>
+{% endblock %}
