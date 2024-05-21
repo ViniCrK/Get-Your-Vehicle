@@ -1,12 +1,23 @@
 {% extends 'global/base.html' %}
 
 {% block content %}
-<img src="{{ vehicle.image.url }}" width="420" height="280" alt="">
-{{ vehicle.type }}
-{{ vehicle.brand }}
-{{ vehicle.model }}
-{{ vehicle.manufacture_year }}
-{{ vehicle.color }}
-{{ vehicle.price }}
-{{ vehicle.wheels_number }}
+  <div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <img src="{{ vehicle.image.url }}" class="card-img-top" alt="Porsche Taycan 4S">
+                <div class="card-body">
+                    <h5 class="card-title">
+                      <strong>{{ vehicle.brand }}</strong> {{ vehicle.model }} ({{ vehicle.manufacture_year }})
+                    </h5>
+                    <p class="card-text">
+                      <strong>Cor:</strong> {{ vehicle.color }}
+                    </p>
+                    <p class="card-text">
+                      <strong>Preço:</strong> R$ {{ vehicle.price }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
 {% endblock %}
