@@ -1,9 +1,11 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, DetailView
 from .models import Vehicle
 
 
-class ListVehiclesView(ListView):
+class ListVehiclesView(LoginRequiredMixin, ListView):
     model = Vehicle
+    paginate_by = 6
     template_name = 'vehicles/list.html'
     context_object_name = 'vehicles'
     queryset = Vehicle.objects.filter(status='D')
