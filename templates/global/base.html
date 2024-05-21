@@ -25,12 +25,15 @@
           </ul>
           {% if not user.is_authenticated %}
             <div class="d-flex align-items-center">
-              <a class="btn btn-sm btn-outline-primary" href="#">Faça Login</a>
+              <a class="btn btn-sm btn-outline-primary" href="{% url 'users:login' %}">Faça Login</a>
               <span class="px-2">ou</span>
               <a class="btn btn-sm btn-outline-primary" href="{% url 'users:register' %}">Cadastre-se</a>
             </div>
           {% else %}
-            <p class="mb-0">Olá, {{ user.username }}</p>
+            <p class="mb-0">Olá, {{ user.first_name }}</p>
+            <div class="d-flex align-items-center px-2">
+              <a class="btn btn-sm btn-outline-primary" href="{% url 'users:logout' %}">Sair</a>
+            </div>
           {% endif %}
         </div>
       </div>
