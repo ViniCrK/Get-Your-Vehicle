@@ -5,15 +5,22 @@ from .brand import Brand
 from .color import Color
 
 
+class VehicleManager(models.Manager):
+    def get_available(self):
+        return self.filter(status='disponivel').order_by('type')
+
+
 class Vehicle(models.Model):
     class Meta:
         verbose_name = 'Veículo'
         verbose_name_plural = 'Veículos'
 
+    objects = VehicleManager()
+
     VEHICLE_STATUS = {
-        'ER': 'Em Revisão',
-        'D': 'Disponível',
-        'I': 'Indisponível',
+        'emrevisao': 'Em Revisão',
+        'disponivel': 'Disponível',
+        'indisponivel': 'Indisponível',
     }
 
     type = models.ForeignKey(
@@ -27,7 +34,7 @@ class Vehicle(models.Model):
         Color, on_delete=models.SET_NULL, null=True, verbose_name='Cor')
     manufacture_year = models.CharField(
         max_length=10, verbose_name='Ano de Fabricação')
-    status = models.CharField(max_length=2, null=True,
+    status = models.CharField(max_length=50, null=True,
                               choices=VEHICLE_STATUS, verbose_name='Status')
     price = models.DecimalField(
         default=0.00, max_digits=9, decimal_places=2, verbose_name='Preço')

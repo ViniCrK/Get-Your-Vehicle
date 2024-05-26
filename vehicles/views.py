@@ -1,5 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, DetailView
+from django.shortcuts import redirect
+from django.db.models import Q
 from .models import Vehicle
 
 
@@ -8,7 +10,7 @@ class ListVehiclesView(LoginRequiredMixin, ListView):
     paginate_by = 6
     template_name = 'vehicles/list.html'
     context_object_name = 'vehicles'
-    queryset = Vehicle.objects.filter(status='D')
+    queryset = Vehicle.objects.get_available()
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -18,6 +20,40 @@ class ListVehiclesView(LoginRequiredMixin, ListView):
         })
 
         return context
+
+
+class SearchListView(ListVehiclesView):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._search_value = ''
+
+    def setup(self, request, *args, **kwargs):
+        self._search_value = request.GET.get('search', '').strip()
+        return super().setup(request, *args, **kwargs)
+
+    def get_queryset(self):
+        search_value = self._search_value
+        return super().get_queryset().filter(
+            Q(model__icontains=search_value)
+        )
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        search_value = self._search_value
+
+        context.update({
+            'site_title': f'{search_value[:30]}',
+            'search_value': search_value,
+        })
+
+        return context
+
+    def get(self, request, *args, **kwargs):
+        if self._search_value == '':
+            return redirect('vehicles:list')
+
+        return super().get(request, *args, **kwargs)
 
 
 class DetailVehicleView(DetailView):
