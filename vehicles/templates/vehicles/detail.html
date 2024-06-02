@@ -14,8 +14,13 @@
                       <strong>Cor:</strong> {{ vehicle.color }}
                     </p>
                     <p class="card-text">
-                      <strong>Preço:</strong> R$ {{ vehicle.price }}</p>
-                </div>
+                      <strong>Preço:</strong> R$ {{ vehicle.price }}
+                    </p>
+                  </div>
+                  <form method="POST" action="{% url 'vehicles:rent' vehicle.slug %}">
+                    {% csrf_token %}
+                    <button class="btn btn-success btn-lg btn-block" type="submit">Locar Veículo</button>
+                  </form>
             </div>
         </div>
     </div>
