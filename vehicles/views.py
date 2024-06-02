@@ -34,7 +34,8 @@ class SearchListView(ListVehiclesView):
     def get_queryset(self):
         search_value = self._search_value
         return super().get_queryset().filter(
-            Q(model__icontains=search_value)
+            Q(model__icontains=search_value) |
+            Q(brand__name__icontains=search_value)
         )
 
     def get_context_data(self, **kwargs):
@@ -43,7 +44,7 @@ class SearchListView(ListVehiclesView):
         search_value = self._search_value
 
         context.update({
-            'site_title': f'{search_value[:30]}',
+            'site_title': f'Busca: {search_value[:30]}',
             'search_value': search_value,
         })
 
