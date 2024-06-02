@@ -21,6 +21,7 @@ class Vehicle(models.Model):
         'emrevisao': 'Em Revisão',
         'disponivel': 'Disponível',
         'indisponivel': 'Indisponível',
+        'locado': 'Locado',
     }
 
     type = models.ForeignKey(
