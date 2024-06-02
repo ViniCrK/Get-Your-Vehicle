@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'homepage',
     'vehicles',
     'users',
-    'employees',
 ]
 
 MIDDLEWARE = [
