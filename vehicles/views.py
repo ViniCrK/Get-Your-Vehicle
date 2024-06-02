@@ -72,3 +72,13 @@ class DetailVehicleView(DetailView):
         })
 
         return context
+
+
+class RentVehicleView(DetailView):
+    def post(self, request, *args, **kwargs):
+        vehicle = Vehicle.objects.get(slug=kwargs['slug'])
+
+        vehicle.status = 'locado'
+        vehicle.save()
+
+        return redirect('vehicles:list')
