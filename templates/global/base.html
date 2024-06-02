@@ -34,7 +34,7 @@
             <div class="d-flex align-items-center px-2">
               <form method="POST" action="{% url 'users:logout' %}">
                 {% csrf_token %}
-                <button class="btn btn-sm btn-outline-primary" type="submit">Sair</button>
+                <button class="btn btn-sm btn-outline-danger" type="submit">Sair</button>
               </form>
             </div>
           {% endif %}
