@@ -32,7 +32,10 @@
           {% else %}
             <p class="mb-0">Olá, {{ user.first_name }}</p>
             <div class="d-flex align-items-center px-2">
-              <a class="btn btn-sm btn-outline-primary" href="{% url 'users:logout' %}">Sair</a>
+              <form method="POST" action="{% url 'users:logout' %}">
+                {% csrf_token %}
+                <button class="btn btn-sm btn-outline-primary" type="submit">Sair</button>
+              </form>
             </div>
           {% endif %}
         </div>
