@@ -14,7 +14,7 @@
             placeholder="Modelo ou Marca"
             value="{{ search_value }}"
           >
-          <button class="btn btn-primary" type="submit" aria-labelledby="search-label">
+          <button class="btn btn-sm btn-outline-info mb-1" type="submit" aria-labelledby="search-label">
             Filtrar
           </button>
         </div>
@@ -32,7 +32,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
                     <a href="{% url 'vehicles:detail' vehicle.slug %}">
-                      <button type="button" class="btn btn-md btn-outline-secondary">Saiba Mais</button>
+                      <button type="button" class="btn btn-md btn-outline-info">Saiba Mais</button>
                     </a>
                   </div>
                   <strong>
@@ -44,11 +44,11 @@
           </div>
         {% endfor %}
       </div>
-      <div class="pagination">
+      <div class="pagination mt-3">
         <span class="step-links">
             {% if page_obj.has_previous %}
-                <a href="?page=1">&laquo; Primeira</a>
-                <a href="?page={{ page_obj.previous_page_number }}">anterior</a>
+                <a href="?page=1" class="btn btn-sm btn-outline-light">&laquo; primeira</a>
+                <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-sm btn-outline-light">anterior</a>
             {% endif %}
     
             <span class="current">
@@ -56,8 +56,8 @@
             </span>
     
             {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}">próxima</a>
-                <a href="?page={{ page_obj.paginator.num_pages }}">Última &raquo;</a>
+                <a href="?page={{ page_obj.next_page_number }}" class="btn btn-sm btn-outline-light">próxima</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-sm btn-outline-light">última &raquo;</a>
             {% endif %}
         </span>
       </div>
